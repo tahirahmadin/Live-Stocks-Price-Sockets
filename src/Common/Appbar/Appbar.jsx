@@ -18,10 +18,18 @@ function Appbar() {
             <div className="col col-md-7 px-md-0 d-block text-white mt-3">
               <div className="d-flex justify-content-start ">
                 {' '}
-                <p className="px-3">Markets.</p>
-                <p className="px-3">Scripts.</p>
-                <p className="px-3">Analyser.</p>
-                <p className="px-3">Investment Guide.</p>
+                <p className="px-3">
+                  Markets<strong style={{ color: '#66bb6a', fontSize: 16 }}>.</strong>
+                </p>
+                <p className="px-3">
+                  Scripts<strong style={{ color: '#66bb6a', fontSize: 16 }}>.</strong>
+                </p>
+                <p className="px-3">
+                  Analyser<strong style={{ color: '#66bb6a', fontSize: 16 }}>.</strong>
+                </p>
+                <p className="px-3">
+                  Investment Guide<strong style={{ color: '#66bb6a', fontSize: 16 }}>.</strong>
+                </p>
               </div>
             </div>
             <div className="col-auto text-right pr-0 mt-3">
