@@ -1,0 +1,19 @@
+.appbar {
+  background-color: #141729;
+  border-bottom: 1px solid #414141;
+  margin-bottom: 10px;
+}
+.appbar-title {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  color: #ffffff;
+}
+@media only screen and (max-width: 600px) {
+  .appbar-title {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: #ffffff;
+  }
+}
