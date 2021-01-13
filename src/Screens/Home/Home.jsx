@@ -38,7 +38,6 @@ export default function Home() {
         };
       }
       stocks.set(name, singleStockPrice);
-      //console.log(stocks);
     });
     setData(stocks);
   };

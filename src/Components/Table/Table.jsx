@@ -25,7 +25,6 @@ function Table({ data }) {
         <tbody>
           {Array.from(data.entries(), ([key, value]) => (
             <tr>
-              {/* {console.log(value)} */}
               <td className="text-left">{key}</td>
 
               <td className="text-left">
@@ -46,7 +45,6 @@ function Table({ data }) {
                   : 'not updated'}
               </td>
               <td className="text-left">
-                {console.log(value.oldPrice)}
                 <Sparklines data={value.oldPrice}>
                   <SparklinesLine color="white" />
                 </Sparklines>
