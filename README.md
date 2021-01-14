@@ -1,6 +1,7 @@
 # Live Stocks App
 
 Live Stocks is a one place trending stocks's price visualiser in real time.
+
 ![Screenshot](Screenshot.png)
 ## Key Features
 
