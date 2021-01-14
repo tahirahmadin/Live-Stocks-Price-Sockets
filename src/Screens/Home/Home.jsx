@@ -5,6 +5,8 @@ import Table from '../../Components/Table/Table';
 import Loader from '../../Common/Loader/Loader';
 import Advertisement from '../../Common/Advertisement/Advertisement';
 
+const SocketUrl = process.env.NODE_ENV === 'development' ? 'ws://stocks.mnet.website/' : 'wss://stocks.mnet.website/';
+
 export default function Home() {
   const [data, setData] = useState(new Map());
 
@@ -78,7 +80,7 @@ export default function Home() {
         </div>
       </section>
       <div>
-        <Websocket url="ws://stocks.mnet.website/" onMessage={handleData} />
+        <Websocket url={SocketUrl} onMessage={handleData} />
       </div>
     </div>
   );
