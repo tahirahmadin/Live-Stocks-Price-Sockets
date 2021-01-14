@@ -3,18 +3,20 @@ import './Home.css';
 import Websocket from 'react-websocket';
 import Table from '../../Components/Table/Table';
 import Loader from '../../Common/Loader/Loader';
+import Advertisement from '../../Common/Advertisement/Advertisement';
 
 export default function Home() {
-  let stocks = new Map();
   const [data, setData] = useState(new Map());
 
-  const handleData = (data) => {
-    let result = JSON.parse(data);
+  const handleData = (response) => {
+    let result = JSON.parse(response);
+    let stocks = new Map(data);
 
+    //Object structure for reference
     // let dummyObject = {
-    //   apple: { oldPrice: 10, newPrice: 11 },
-    //   LinkedIn: { prevPrice: 10, latestPrice: 11 },
-    //   facebook: { prevPrice: 10, latestPrice: 11 },
+    //   apple: { oldPrice: [10,20,21], newPrice: 11 },
+    //   LinkedIn: { oldPrice: [10,20,21], newPrice: 11 },
+    //   facebook: { oldPrice: [10,20,21], newPrice: 11 },
     // };
 
     result.forEach(([name, price]) => {
@@ -39,6 +41,7 @@ export default function Home() {
       }
       stocks.set(name, singleStockPrice);
     });
+
     setData(stocks);
   };
   return (
@@ -48,12 +51,7 @@ export default function Home() {
         <p className="text-left text-white">
           Get deep insights of the stocks in minutes
           <span>
-            <img
-              src="https://www.flaticon.com/svg/vstatic/svg/899/899117.svg?token=exp=1610517281~hmac=56271ba8bcca99fa472a4da3aa8af61c"
-              alt="btc-icon"
-              height="20px"
-              className="pl-1"
-            />
+            <img src="assets/btc.svg" alt="btc-icon" height="20px" className="pl-1" />
           </span>
         </p>
       </div>
@@ -66,19 +64,15 @@ export default function Home() {
                 <h6 className="text-left text-white my-2">
                   Trending Stocks
                   <span>
-                    <img
-                      src="https://www.flaticon.com/svg/vstatic/svg/3798/3798624.svg?token=exp=1610517774~hmac=8b44b5b8f3af2967bf3e2e4c0b757654"
-                      height="20px"
-                      alt="trending-icon"
-                      className="pl-1 mb-1"
-                    />
+                    <img src="assets/revenue.svg" height="20px" alt="trending-icon" className="pl-1 mb-1" />
                   </span>
                 </h6>
-                {data ? <Table data={data} /> : <Loader />}
+
+                {data.size !== 0 ? <Table data={data} /> : <Loader />}
               </div>
             </div>
             <div className="col-md-4 col-sm-12 col-xs-12">
-              <div className="right-section shadow">Right section</div>
+              <Advertisement />
             </div>{' '}
           </div>
         </div>

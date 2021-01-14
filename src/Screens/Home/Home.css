@@ -6,16 +6,10 @@
   background-color: #070a1b;
   height: 100%;
 }
-.right-section {
-  background-color: #141629;
-  height: 550px;
-  margin: 15px;
-  border-radius: 14px;
-  padding: 20px;
-}
+
 .left-section {
   background-color: #141629;
-  min-height: 550px;
+  min-height: 600px;
   width: 100%;
   margin: 15px;
   border-radius: 7px;

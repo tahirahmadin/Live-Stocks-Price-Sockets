@@ -1,0 +1,10 @@
+.cover-section {
+  background-color: #141629;
+  height: 550px;
+  margin: 15px;
+  border-radius: 14px;
+  padding: 20px;
+  background-image: url('https://wp-asset.groww.in/wp-content/uploads/2020/04/09183633/Blog_outperforming-stocks.jpg');
+  background-size: cover;
+  background-position: center;
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Table.css';
-import { Sparklines, SparklinesLine } from 'react-sparklines';
+import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 function Table({ data }) {
   return (
     <div>
@@ -24,11 +23,10 @@ function Table({ data }) {
         </thead>
         <tbody>
           {Array.from(data.entries(), ([key, value]) => (
-            <tr>
-              <td className="text-left">{key}</td>
+            <tr key={key}>
+              <td className="text-left">{key.toUpperCase()}</td>
 
               <td className="text-left">
-                {' '}
                 {parseFloat(value.newPrice) === parseFloat(value.oldPrice) ? (
                   <span style={{ backgroundColor: 'white', color: 'black', padding: 7 }}>
                     {parseFloat(value.newPrice).toFixed(2)}
@@ -41,16 +39,21 @@ function Table({ data }) {
               </td>
               <td className="text-left">
                 {parseFloat(value.newPrice) === parseFloat(value.oldPrice[value.oldPrice.length - 1])
-                  ? 'few seconds ago'
-                  : 'not updated'}
+                  ? 'not updated'
+                  : 'few seconds ago'}
               </td>
               <td className="text-left">
-                <Sparklines data={value.oldPrice}>
-                  <SparklinesLine color="white" />
+                <Sparklines
+                  data={[...value.oldPrice.slice(value.oldPrice.length - 25, value.oldPrice.length), value.newPrice]}
+                  width={100}
+                  height={15}
+                  margin={1}>
+                  <SparklinesLine style={{ fill: '#56b45d' }} color="#bdbdbd" />
+                  <SparklinesSpots />
                 </Sparklines>
               </td>
             </tr>
-          ))}
+          )).slice(0, 10)}
         </tbody>
       </table>
     </div>
