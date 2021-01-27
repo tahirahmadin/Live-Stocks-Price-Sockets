@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './Home.css';
 import Websocket from 'react-websocket';
 import Table from '../../Components/Table/Table';
 import Loader from '../../Common/Loader/Loader';
 import Advertisement from '../../Common/Advertisement/Advertisement';
+import './Home.css';
 
 const SocketUrl = process.env.NODE_ENV === 'development' ? 'ws://stocks.mnet.website/' : 'wss://stocks.mnet.website/';
 
 export default function Home() {
-  const [data, setData] = useState(new Map());
+  const [data, setData] = useState();
 
   const handleData = (response) => {
     let result = JSON.parse(response);
@@ -29,7 +29,6 @@ export default function Home() {
 
         //if exists then updating the prices
         let tempdata = stocks.get(name).oldPrice;
-
         singleStockPrice = {
           oldPrice: [...tempdata, previousPrice],
           newPrice: price,
@@ -70,7 +69,7 @@ export default function Home() {
                   </span>
                 </h6>
 
-                {data.size !== 0 ? <Table data={data} /> : <Loader />}
+                {data && data.size !== 0 ? <Table data={data} /> : <Loader />}
               </div>
             </div>
             <div className="col-md-4 col-sm-12 col-xs-12">
